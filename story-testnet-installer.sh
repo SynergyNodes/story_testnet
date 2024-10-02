@@ -20,8 +20,8 @@ cd $HOME
 
 echo ""
 echo ""
-echo "Installing go1.23.5..."
-curl https://dl.google.com/go/go1.23.5.linux-amd64.tar.gz | sudo tar -C /usr/local -zxvf -
+echo "Installing go1.23.1..."
+curl https://dl.google.com/go/go1.23.1.linux-amd64.tar.gz | sudo tar -C /usr/local -zxvf -
 
 echo ""
 echo ""
@@ -89,7 +89,7 @@ rm -rf $HOME/.story/story/data
 
 # Download the snapshot for Story
 $snapshot_story=$(curl -s "https://www.synergynodes.com/snapshots.php?chain=story_testnet_story")
-curl -L $$snapshot_story | tar -Ilz4 -xf - -C $HOME/.story/story
+curl -L $snapshot_story | tar -Ilz4 -xf - -C $HOME/.story/story
 mv $HOME/.story/story/priv_validator_state.json.backup $HOME/.story/story/data/priv_validator_state.json
 
 echo ""
