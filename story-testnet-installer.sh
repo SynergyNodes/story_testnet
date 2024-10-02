@@ -46,8 +46,10 @@ echo "Downloading Story and Story-Geth binaries..."
 mkdir -p $HOME/go/bin/
 
 wget https://support.synergynodes.com/misc/story_testnet/story
-wget https://support.synergynodes.com/misc/story_testnet/story-geth
-mv story $HOME/go/bin/
+wget https://support.synergynodes.com/misc/story_testnet/geth
+mv geth story-geth
+chown +x story-geth story
+mv $HOME/go/bin/
 mv story-geth $HOME/go/bin/
 mkdir -p $HOME/.story/story
 mkdir -p $HOME/.story/geth/iliad/geth
