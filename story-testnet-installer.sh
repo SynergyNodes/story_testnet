@@ -48,9 +48,10 @@ mkdir -p $HOME/go/bin/
 wget https://support.synergynodes.com/misc/story_testnet/story
 wget https://support.synergynodes.com/misc/story_testnet/geth
 mv geth story-geth
-chown +x story-geth story
-mv $HOME/go/bin/
+chmod +x story-geth story
+chmod +x story
 mv story-geth $HOME/go/bin/
+mv story $HOME/go/bin/
 mkdir -p $HOME/.story/story
 mkdir -p $HOME/.story/geth/iliad/geth
 
@@ -88,16 +89,16 @@ cp $HOME/.story/story/data/priv_validator_state.json $HOME/.story/story/priv_val
 rm -rf $HOME/.story/story/data
 
 # Download the snapshot for Story
-$snapshot_story=$(curl -s "https://www.synergynodes.com/snapshots.php?chain=story_testnet_story")
-curl -L $snapshot_story | tar -Ilz4 -xf - -C $HOME/.story/story
+SNAPSHOT_STORY=$(curl -s "https://www.synergynodes.com/snapshots.php?chain=story_testnet_story")
+curl -L $SNAPSHOT_STORY | tar -Ilz4 -xf - -C $HOME/.story/story
 mv $HOME/.story/story/priv_validator_state.json.backup $HOME/.story/story/data/priv_validator_state.json
 
 echo ""
 echo ""
 echo "Downloading and restoring Story-Geth snapshot ..."
 # Download the snapshot for Geth
-$snapshot_geth=$(curl -s "https://www.synergynodes.com/snapshots.php?chain=story_testnet_geth")
-curl -L $snapshot_geth | tar -Ilz4 -xf - -C $HOME/.story/geth/iliad/geth
+SNAPSHOT_GETH=$(curl -s "https://www.synergynodes.com/snapshots.php?chain=story_testnet_geth")
+curl -L $SNAPSHOT_GETH | tar -Ilz4 -xf - -C $HOME/.story/geth/iliad/geth
 
 
 echo ""
@@ -161,18 +162,20 @@ echo ""
 echo ""
 echo "Checking Story-Geth service status..."
 sudo systemctl status story-geth --no-pager -l
+echo ""
+echo ""
 echo "Checking Story service status..."
 sudo systemctl status story --no-pager -l
 
 echo ""
 echo ""
 echo "Checking Story-Geth Logs..."
-sudo journalctl -u story-geth -n 100 -o cat
+sudo journalctl -u story-geth -n 100 -o cat --no-pager
 
 echo ""
 echo ""
 echo "Checking Story Logs..."
-sudo journalctl -u story -n 100 -o cat
+sudo journalctl -u story -n 100 -o cat --no-pager
 
 echo ""
 echo ""
