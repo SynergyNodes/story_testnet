@@ -15,7 +15,7 @@ display_menu() {
     echo "10. Donwload & replace Addrbook.json"
     echo "11. Download & replace Genesis.json"
     echo "12. Check Sync Status"
-    ceho "13. Get Node's Voting Power"
+    echo "13. Get Node's Voting Power"
     echo "14. Select an Option"
     echo "15. Start Story Node"
     echo "16. Start Geth Node"
