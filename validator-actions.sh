@@ -178,7 +178,7 @@ start_both() {
 # Main loop
 while true; do
     display_menu
-    read -p "Enter your choice (1-3): " choice
+    read -p "Enter your choice (1-18): " choice
 
     case $choice in
         1)
@@ -234,7 +234,7 @@ while true; do
             exit 0
             ;;
         *)
-            echo "Invalid option. Please enter 1, 2, or 3."
+            echo "Invalid option. Please enter from 1 to 17."
             ;;
     esac
 done
